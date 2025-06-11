@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Elokapina Game</title>
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css">
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 2em; }
+        #counter { font-size: 2em; }
+    </style>
+</head>
+<body>
+    <h1>Elokapina</h1>
+    <p>Click the protest button to gather supporters. Get 10 supporters to win!</p>
+    <button id="protest-button">Protest</button>
+    <div id="counter">Supporters: <span id="score">0</span></div>
+    <div id="result"></div>
+    <py-script>
+        from js import document
+
+        score = 0
+
+        def protest(event):
+            global score
+            score += 1
+            document.getElementById("score").innerText = score
+            if score >= 10:
+                document.getElementById("result").innerText = "Congratulations! The movement succeeded!"
+
+        button = document.getElementById("protest-button")
+        button.addEventListener("click", protest)
+    </py-script>
+</body>
+</html>
